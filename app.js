@@ -14,7 +14,9 @@ const Costos_Directos = require('./db/db.modelo.costos_directos')
 const Periodos = require('./db/db.modelo.periodos')
 const Ingresos = require('./db/db.modelo.ingresos')
 const Proyectos = require('./db/db.modelo.proyectos')
-const Presupuestos = require('./db/db.modelo.presupuestos')
+const Presupuestos = require('./db/db.modelo.presupuestos');
+
+const vistaApp = require('./app/vista/vista.app')
 
 
 //Middlewares Globales
@@ -55,3 +57,5 @@ iniciarServidor();
 
 
 
+//Inicializar las vistas
+vistaApp(app);
