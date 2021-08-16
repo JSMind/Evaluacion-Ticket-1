@@ -91,27 +91,35 @@
             <!-- TABLA FLUJO DE EFECTIVO -->   
             <div class="container">
                 <h2>FLUJO DE EFECTIVO</h2>
-                <table class="table table-bordered table-sm ">
+                <table class="tabla1 table table-bordered table-sm ">
                     <thead>
-                        <tr class="agregarmes table-success">
+                        <tr class="flujoefectivo table-success">
                             <th scope="col">MES</th>
-                            <th class="sumatotal"scope="col">SUMA TOTAL</th>
+                            <th class="sumatotal" scope="col">SUMA TOTAL</th>
                         </tr>
                     </thead>
-                    <tbody id="Flujoefectivo">
-                        <tr> <th scope="row">INGRESOS</th></tr>
-                        <tr> <th scope="row">EGRESOS</th></tr>
-                        <tr> <th scope="row">TOTAL</th></tr>  
-                        <tr> <th scope="row">TOTAL ACUMULADO</th></tr>                            
+                    <tbody class="flujoefectivo">
+                        <tr > 
+                            <th scope="row">INGRESOS</th>
+                            <td class="filasuma">Σ ingresos</td>
+                        </tr>
+                        <tr  > 
+                            <th scope="row">EGRESOS</th>
+                            <td class="filasuma">Σ egresos</td>
+                        </tr>
+                        <tr >
+                            <th scope="row">TOTAL</th>
+                            <td class="filasuma">Σ total</td>
+                        </tr>  
+                        <tr > 
+                            <th scope="row">TOTAL ACUMULADO</th>
+                            <td class="filasuma">total acumulado</td>
+                        </tr>                            
                     </tbody>
                 </table>
                 <button id="agregarperiodo">AGREGAR PERIODO</button>
                 <button>ELIMINAR</button>
             </div>
-            <template id="templateefectivo">
-                <tr> <th scope="row">PRUEBA</th></tr>                            
-                            
-            </template>
             <br>
             <br> 
 
@@ -120,16 +128,28 @@
                 <h2>ESTADO DE RESULTADOS</h2>
                 <table class="table table-bordered table-sm ">
                     <thead>
-                        <tr class=" table-success">
+                        <tr class="estadoresultados table-success">
                             <th scope="col">MES</th>
-                            <th  scope="col">SUMA TOTAL</th>
+                            <th class="sumatotal" scope="col">SUMA TOTAL</th>
                         </tr>
                     </thead>
-                    <tbody id="estadoresultados">
-                        <tr> <th scope="row">VENTAS</th></tr>
-                        <tr> <th scope="row">COSTOS</th></tr>
-                        <tr> <th scope="row">MARGEN</th></tr>  
-                        <tr> <th scope="row">SALDO FINAL</th></tr>                            
+                    <tbody class="estadoresultados">
+                        <tr > 
+                            <th scope="row">VENTAS</th>
+                            <td class="filasuma1">Σ ventas</td>
+                        </tr>
+                        <tr  > 
+                            <th scope="row">COSTOS</th>
+                            <td class="filasuma1">Σ costos</td>
+                        </tr>
+                        <tr >
+                            <th scope="row">MARGEN</th>
+                            <td class="filasuma1">Σ margen</td>
+                        </tr>  
+                        <tr > 
+                            <th scope="row">SALDO FINAL</th>
+                            <td class="filasuma1">saldo final</td>
+                        </tr>                           
                     </tbody>
                 </table>
             </div>
@@ -141,17 +161,24 @@
                 <h2>INGRESOS</h2>
                 <table class="table table-bordered table-sm ">
                     <thead>
-                        <tr class="table-danger">
+                        <tr class="ingresos table-danger">
                             <th scope="col">MES</th>
-                            <th scope="col">SUMA TOTAL</th>
+                            <th class="sumatotal" scope="col">SUMA TOTAL</th>
                         </tr>
                     </thead>
-                    <tbody id="estadoresultados">
-                        <tr> <th scope="row">CONCEPTO</th></tr> 
-                        <tr> <th scope="row">TOTAL</th></tr>                          
-                         
+                    <tbody class= "ingresos" >
+                        <tr > 
+                            <th scope="row">CONCEPTO</th>
+                            <td class="filasuma2">Σ concepto</td>
+                        </tr>
+                        <tr  > 
+                            <th scope="row">TOTAL</th>
+                            <td class="filasuma2">Σ TOTAL</td>
+                        </tr>                                              
                     </tbody>
                 </table>
+                <button id="agregarconceptoingreso">AGREGAR CONCEPTO</button>
+                <button>ELIMINAR</button>
             </div>
             <br>
             <br> 
@@ -166,12 +193,14 @@
                             <th scope="col">SUMA TOTAL</th>
                         </tr>
                     </thead>
-                    <tbody id="estadoresultados">
+                    <tbody >
                         <tr> <th scope="row">CONCEPTO</th></tr> 
                         <tr> <th scope="row">TOTAL</th></tr>                          
                          
                     </tbody>
                 </table>
+                <button id="agregarconceptocostos">AGREGAR CONCEPTO</button>
+                <button>ELIMINAR</button>
             </div>
             
 
@@ -185,12 +214,14 @@
                             <th scope="col">SUMA TOTAL</th>
                         </tr>
                     </thead>
-                    <tbody id="estadoresultados">
+                    <tbody >
                         <tr> <th scope="row">CONCEPTO</th></tr> 
                         <tr> <th scope="row">TOTAL</th></tr>                          
                          
                     </tbody>
                 </table>
+                <button id="agregarconceptogastosadmin">AGREGAR CONCEPTO</button>
+                <button>ELIMINAR</button>
             </div>
            
 
@@ -204,12 +235,14 @@
                             <th scope="col">SUMA TOTAL</th>
                         </tr>
                     </thead>
-                    <tbody id="estadoresultados">
+                    <tbody >
                         <tr> <th scope="row">ROL DE RECURSO</th></tr> 
                         <tr> <th scope="row">TOTAL</th></tr>                          
                          
                     </tbody>
                 </table>
+                <button id="agregarconceptorecurso">AGREGAR CONCEPTO</button>
+                <button>ELIMINAR</button>
             </div>
             
 
@@ -223,20 +256,22 @@
                             <th scope="col">SUMA TOTAL</th>
                         </tr>
                     </thead>
-                    <tbody id="estadoresultados">
+                    <tbody>
                         <tr> <th scope="row">NOMBRE ROL DE RECURSO</th></tr> 
                         <tr> <th scope="row">TOTAL</th></tr>                          
                          
                     </tbody>
                 </table>
+
             </div>
-            <br>
-            <br> 
-            <br>
+            <h2 class="text-center">.</h2>
+            <h2 class="text-center"></h2>
+            </div>
+
 
              <!-- TABLA RESUMEN COSTOS RECURSOS -->   
-            <div class="container">
-                <h2 class="text-center">RESUMEN COSTOS RECURSOS</h2>
+             <h2 class="text-center">RESUMEN COSTOS RECURSOS</h2>
+             <div class="container">
                 <table class="table table-bordered table-sm ">
                     <thead>
                         <tr class="table-warning">
@@ -244,7 +279,7 @@
                             <th scope="col">SUMA TOTAL</th>
                         </tr>
                     </thead>
-                    <tbody id="estadoresultados">
+                    <tbody >
                         <tr> <th scope="row">NOMBRE ROL DE RECURSO</th></tr> 
                         <tr> <th scope="row">TOTAL</th></tr>                          
                          
@@ -253,60 +288,12 @@
             </div>
             <br>
             <br> 
-
-
-
-
-
-
-            <div class="container">
-                <div class="form-group">
-                    <button type="button" class="btn btn-primary mr-2" id ="Agregar">Agregar</button>
-                    <button type="button" class="btn btn-danger" onclick=eliminarFila()>Eliminar Columna</button>
-                </div>
-                <!--<label for="start">Start date:</label> -->
-        
-                <!-- <input type="month" id="start" name="trip-start" value="2002-01" min="2010-01" max="2030-12"> -->
-        
-                <table class="table" id="table">
-        
-                    <thead>
-                        <tr id="headTable">
-                            <th scope="col">Id Presupuesto</th>
-                            <th scope="col" id="columFinal">SUMATORIA TOTAL</th>
-                        </tr> 
-                    </thead>
-        
-                    <tbody>
-                        <tr id="bodyColINGRESOS">
-                            <th scope="col"> INGRESOS </th>
-                            <td scope="col" id="ultColumnSumINGRESOS"> datos sumatoria</td>
-                        </tr>
-                        
-                        <tr id="bodyColEGRESOS">
-                            <th scope="col"> EGRESOS </th>
-                        
-                            <td scope="col" id="ultColumnSumEGRESOS"> datos sumatoria</td>
-                        
-                        </tr>
-                        <tr id="bodyColTOTAL">
-                            <th scope="col"> TOTAL </th>
-                            
-                            <td scope="col" id="ultColumnSumTOTAL"> datos sumatoria</td>
-                        
-                        </tr>
-                        <tr id="bodyColTOTAL_ACUMULADO">
-                            <th scope="col"> TOTAL ACUMULADO </th>
-                        
-                            <td scope="col" id="ultColumnSumTOTAL_ACUMULADO"> datos sumatoria</td>
-                        
-                        </tr>
-        
-                    </tbody>
-        
-        
-                </table>
-            </div> 
+            <br>
+            
+            <div class="container" >
+                <button class="btn btn-success" >GUARDAR</button>
+                <button class="btn btn-warning" >CANCELAR</button>  
+            </div>
 
 
 
