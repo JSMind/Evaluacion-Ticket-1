@@ -117,8 +117,8 @@
                         </tr>                            
                     </tbody>
                 </table>
-                <button id="agregarperiodo">AGREGAR PERIODO</button>
-                <button>ELIMINAR</button>
+                <button class="btn btn-success"  id="agregarperiodo">AGREGAR PERIODO</button>
+                <button class="btn btn-secondary">ELIMINAR</button>
             </div>
             <br>
             <br> 
@@ -188,15 +188,21 @@
                 <h2>COSTOS DIRECTOS</h2>
                 <table class="table table-bordered table-sm ">
                     <thead>
-                        <tr class="table-danger">
+                        <tr class="costosdirectos table-danger">
                             <th scope="col">MES</th>
-                            <th scope="col">SUMA TOTAL</th>
+                            <th class="sumatotal" scope="col">SUMA TOTAL</th>
                         </tr>
                     </thead>
-                    <tbody >
-                        <tr> <th scope="row">CONCEPTO</th></tr> 
-                        <tr> <th scope="row">TOTAL</th></tr>                          
-                         
+                    <tbody class="costosdirectos">
+                        <tr > 
+                            <th scope="row">CONCEPTO</th>
+                            <td class="filasuma3">Σ concepto</td>
+                        </tr>
+                        <tr  > 
+                            <th scope="row">TOTAL</th>
+                            <td class="filasuma3">Σ TOTAL</td>
+                        </tr>  
+                       
                     </tbody>
                 </table>
                 <button id="agregarconceptocostos">AGREGAR CONCEPTO</button>
@@ -209,14 +215,22 @@
                 <h2>GASTOS ADMINISTRATIVOS</h2>
                 <table class="table table-bordered table-sm ">
                     <thead>
-                        <tr class="table-danger">
+                        <tr class="gastosadministrativos table-danger">
                             <th scope="col">MES</th>
-                            <th scope="col">SUMA TOTAL</th>
+                            <th class="sumatotal" scope="col">SUMA TOTAL</th>
                         </tr>
                     </thead>
-                    <tbody >
-                        <tr> <th scope="row">CONCEPTO</th></tr> 
-                        <tr> <th scope="row">TOTAL</th></tr>                          
+                    <tbody class="gastosadministrativos"  >
+                        <tr > 
+                            <th scope="row">CONCEPTO</th>
+                            <td class="filasuma4">Σ concepto</td>
+                        </tr>
+                        <tr  > 
+                            <th scope="row">TOTAL</th>
+                            <td class="filasuma4">Σ TOTAL</td>
+                        </tr>  
+                        
+                                              
                          
                     </tbody>
                 </table>
@@ -230,18 +244,24 @@
                 <h2>RECURSOS (% DE ASIGNACION)</h2>
                 <table class="table table-bordered table-sm ">
                     <thead>
-                        <tr class="table-warning">
+                        <tr class="recursos table-warning">
                             <th scope="col">MES</th>
-                            <th scope="col">SUMA TOTAL</th>
+                            <th  class="sumatotal" scope="col">SUMA TOTAL</th>
                         </tr>
                     </thead>
-                    <tbody >
-                        <tr> <th scope="row">ROL DE RECURSO</th></tr> 
-                        <tr> <th scope="row">TOTAL</th></tr>                          
-                         
+                    <tbody class=" recursos" >
+                        <tr > 
+                            <th scope="row">(%) ROL DE RECURSO</th>
+                            <td class="filasuma5">Σ % ROL</td>
+                        </tr>
+                        <tr  > 
+                            <th scope="row">TOTAL</th>
+                            <td class="filasuma5">Σ TOTAL</td>
+                        </tr>  
+                      
                     </tbody>
                 </table>
-                <button id="agregarconceptorecurso">AGREGAR CONCEPTO</button>
+                <button id="agregarconceptorecurso">AGREGAR ROL</button>
                 <button>ELIMINAR</button>
             </div>
             
@@ -251,15 +271,21 @@
                 <h2>COSTOS</h2>
                 <table class="table table-bordered table-sm ">
                     <thead>
-                        <tr class="table-warning">
+                        <tr class="costos table-warning">
                             <th scope="col">MES</th>
-                            <th scope="col">SUMA TOTAL</th>
+                            <th class="sumatotal" scope="col">SUMA TOTAL</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr> <th scope="row">NOMBRE ROL DE RECURSO</th></tr> 
-                        <tr> <th scope="row">TOTAL</th></tr>                          
-                         
+                    <tbody class="costos">
+                        <tr > 
+                            <th scope="row">NOMBRE ROL DE RECURSO</th>
+                            <td class="filasuma6">Σ costos</td>
+                        </tr>
+                        <tr  > 
+                            <th scope="row">TOTAL</th>
+                            <td class="filasuma6">Σ TOTAL</td>
+                        </tr> 
+                                                      
                     </tbody>
                 </table>
 
@@ -274,14 +300,21 @@
              <div class="container">
                 <table class="table table-bordered table-sm ">
                     <thead>
-                        <tr class="table-warning">
+                        <tr class=" resumen table-warning">
                             <th scope="col">MES</th>
-                            <th scope="col">SUMA TOTAL</th>
+                            <th class="sumatotal" scope="col">SUMA TOTAL</th>
                         </tr>
                     </thead>
-                    <tbody >
-                        <tr> <th scope="row">NOMBRE ROL DE RECURSO</th></tr> 
-                        <tr> <th scope="row">TOTAL</th></tr>                          
+                    <tbody class="resumen" >
+                        <tr > 
+                            <th scope="row">NOMBRE ROL DE RECURSO</th>
+                            <td class="filasuma7">Σ costos</td>
+                        </tr>
+                        <tr  > 
+                            <th scope="row">TOTAL</th>
+                            <td class="filasuma7">Σ TOTAL</td>
+                        </tr> 
+                                                
                          
                     </tbody>
                 </table>
@@ -291,8 +324,8 @@
             <br>
             
             <div class="container" >
-                <button class="btn btn-success" >GUARDAR</button>
-                <button class="btn btn-warning" >CANCELAR</button>  
+                <button  class="btn btn-primary" >GUARDAR</button>
+                <button  class="btn btn-secondary "  >CANCELAR</button>  
             </div>
 
 
