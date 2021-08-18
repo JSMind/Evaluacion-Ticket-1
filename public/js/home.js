@@ -106,7 +106,7 @@ function agregarPeriodo(aux) {
         // nuevo.textContent = "Hola!!"
             
     } else { 
-        fecha= ["ENERO","FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE" ]
+        fecha = ["ENERO","FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE" ]
         indice = fecha.indexOf(`${mes}`)
 
         th.textContent = fecha[indice+i]
@@ -151,13 +151,11 @@ agregarperiodo.addEventListener('click', ()=> {                 //Detectamos el 
 async function Ingresos() {
     let datos = await fetch(`http://localhost:3000/ingresos`, {
         method: 'get',
-        headers: {
-            "Accept": "application/json, text/plain, */*",
-            'Content-Type': 'application/json',
-            //'Authorization': `Bearer ${usuario.token}`
-        }
     });
+
     let ingresos = await datos.json()
+    console.log("Los ingresos registrados en la base de datos por conceptos son: ")
+    console.log(ingresos)
     return ingresos;
 }
 

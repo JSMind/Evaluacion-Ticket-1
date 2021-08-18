@@ -5,9 +5,17 @@ module.exports = (app) => {
 
     app.get('/home', async(req,res) => {                            //Vista que renderiza la pagina Home
         try { 
-            res.render('home')  
+            res.render('homee')  
         } catch (error) {
             console.log('Error al renderizar la pagina principal');
+            res.status(400).json(error.message);
+        }
+    });
+    app.get('/nuevopresupuesto', async(req,res) => {                            //Vista que renderiza la pagina Home
+        try { 
+            res.render('nuevopresupuesto')  
+        } catch (error) {
+            console.log('Error al renderizar la pagina');
             res.status(400).json(error.message);
         }
     });

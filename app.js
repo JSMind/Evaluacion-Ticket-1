@@ -16,7 +16,12 @@ const Ingresos = require('./db/db.modelo.ingresos')
 const Proyectos = require('./db/db.modelo.proyectos')
 const Presupuestos = require('./db/db.modelo.presupuestos');
 
+const Usuarios = require('./db/db.modelo.usuarios');
+const Permisos = require('./db/db.modelo.permisos');
+
+
 const vistaApp = require('./app/vistas/vista.app')
+const vistaUsuarios = require('./app/vistas/vista.usuarios')
 const vistaIngresos = require('./app/vistas/vista.ingresos')
 
 
@@ -32,6 +37,8 @@ app.set('views', __dirname + '/views')
 //Inicializamos el Servidor 
 async function iniciarServidor() {
     try {
+        await Permisos.sync({ alter: true });
+        await Usuarios.sync({ alter: true });
         await Recursos_Role.sync({ alter: true });
         await Conceptos_Costos_Administrativos.sync({ alter: true });
         await Conceptos_Costos_Directos.sync({ alter: true });
@@ -61,3 +68,4 @@ iniciarServidor();
 //Inicializar las vistas
 vistaApp(app);
 vistaIngresos(app);
+vistaUsuarios(app);
