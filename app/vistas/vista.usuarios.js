@@ -33,6 +33,7 @@ module.exports = async (app) => {
         try {
             let nuevoUsuario = await controladorUsuarios.crearUsuario(usuario)
             res.status(200).json({message: 'Registro de usuario exitoso', nuevoUsuario})
+            
         } catch (error) {
             console.log(error.message);
             res.status(500).json({message: error.message});
@@ -46,6 +47,8 @@ module.exports = async (app) => {
             if (inspeccionarUsuario){
                 let validacion = await controladorUsuarios.generarToken(usuario)
                 res.status(200).json({message: 'Se valido el usuario', validacion})
+            }else{
+                res.status(200).json({message: 'Credenciales incorrectas'})
             }
         } catch (error) {
             console.log(error.message);

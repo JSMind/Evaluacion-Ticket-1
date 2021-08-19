@@ -8,10 +8,11 @@ const bcrypt = require('bcrypt');
 let inspeccionarUsuario = async(usuario) => {                                    //Metodo de consulta para validar que los datos de acceso del usuario esten registrados en la base de datos 
     try {
         let existeUsuario = await Usuarios.findOne({where: {correo: `${usuario.correo}`}})
+        // console.log(existeUsuario)
         if (existeUsuario != null){
-            // const validarcontrasena = await bcrypt.compare(usuario.contrasena, user.password);
-            let validacion = await Usuarios.findOne({where: {contrasena: `${usuario.contrasena}`}})
-            if (validacion != null){
+            const validarcontrasena = await bcrypt.compare(usuario.contrasena, existeUsuario.contrasena);
+            console.log(validarcontrasena)
+            if (validarcontrasena){
                 return true;
             } else {
                 return false;

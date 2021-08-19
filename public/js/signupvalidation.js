@@ -2,7 +2,7 @@
 let validarTxt = (texto, tipo) =>{
     try {
         if(texto == null || texto.length < 4 || /^\s+$/.test(texto)){
-            throw new Error (`El campo de ${tipo}, debe poseer un nombre de almenos cuatro letras`);
+            throw new Error (`El campo de ${tipo}, debe poseer un nombre de al menos cuatro letras`);
         } else{
             return 'Registro Valido'
         }

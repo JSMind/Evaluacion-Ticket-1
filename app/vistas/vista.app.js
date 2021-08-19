@@ -5,22 +5,22 @@ module.exports = (app) => {
 
     app.get('/home', async(req,res) => {                            //Vista que renderiza la pagina Home
         try { 
-            res.render('homee')  
+            res.render('home')  
         } catch (error) {
             console.log('Error al renderizar la pagina principal');
             res.status(400).json(error.message);
         }
     });
-    app.get('/nuevopresupuesto', async(req,res) => {                            //Vista que renderiza la pagina Home
+    app.get('/nuevopresupuesto', async(req,res) => {                 //Vista que renderiza la pagina Nuevopresupuesto
         try { 
             res.render('nuevopresupuesto')  
         } catch (error) {
-            console.log('Error al renderizar la pagina');
+            console.log('Error al renderizar la pagina nuevopresupuesto');
             res.status(400).json(error.message);
         }
     });
 
-    app.get('/login', async(req,res) => {                            //Vista que renderiza la pagina Home
+    app.get('/login', async(req,res) => {                            //Vista que renderiza la pagina login
         try { 
             res.render('login')  
         } catch (error) {
@@ -29,7 +29,7 @@ module.exports = (app) => {
         }
     });
 
-    app.get('/signup', async(req,res) => {                            //Vista que renderiza la pagina Home
+    app.get('/signup', async(req,res) => {                            //Vista que renderiza la pagina Signup
         try { 
             res.render('signup')  
         } catch (error) {

@@ -20,14 +20,15 @@ const Usuarios = require('./db/db.modelo.usuarios');
 const Permisos = require('./db/db.modelo.permisos');
 
 
-const vistaApp = require('./app/vistas/vista.app')
-const vistaUsuarios = require('./app/vistas/vista.usuarios')
-const vistaIngresos = require('./app/vistas/vista.ingresos')
+const vistaApp = require('./app/vistas/vista.app');
+const vistaUsuarios = require('./app/vistas/vista.usuarios');
+const vistaIngresos = require('./app/vistas/vista.ingresos');
 
 
 //Middlewares Globales
 app.use(express.json())
 app.use(cors())
+
 
 //Configuraciones Globales
 app.use(express.static(__dirname + '/public'))
@@ -61,11 +62,12 @@ async function iniciarServidor() {
 
     }
 }
+
 iniciarServidor();
 
 
 
 //Inicializar las vistas
 vistaApp(app);
-vistaIngresos(app);
 vistaUsuarios(app);
+vistaIngresos(app);

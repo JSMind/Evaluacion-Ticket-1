@@ -31,6 +31,7 @@ let nuevoIngreso = async (usuario) =>{                                          
             body: JSON.stringify(usuario)
         })
         let respuesta = await iniciarSesion.json();
+        
         console.log(respuesta)
         return respuesta;
     } catch (error) {
