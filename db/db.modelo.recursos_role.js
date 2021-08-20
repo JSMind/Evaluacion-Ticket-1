@@ -5,12 +5,16 @@ const sequelize = require('./db.conection')
 //Datos que contendra la tabla Recursos_Rol
 
 const Recursos_Role = sequelize.define ('Recursos_Role',{
-    tipo_role:{
-        type: DataTypes.CHAR(70),
+    numero_role:{
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    nombre_role:{
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     recurso_monto:{
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false
     }
     

@@ -4,10 +4,14 @@ const sequelize = require('./db.conection')
 //Datos que contendra la tabla Conceptos_Costos_Administrativos
 
 const Conceptos_Costos_Administrativos = sequelize.define ('Conceptos_Costos_Administrativos',{
-    concepto_costo_administrativo:{
-        type: DataTypes.CHAR(100),
+    numero_concepto:{
+        type: DataTypes.INTEGER,
         allowNull: false
-    }  
+    },  
+    concepto_nombre:{
+        type: DataTypes.STRING(100),
+        allowNull: false
+    }   
 },{
     timestamps: true
 });

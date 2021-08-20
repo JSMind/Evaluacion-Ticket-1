@@ -22,12 +22,14 @@ const Permisos = require('./db/db.modelo.permisos');
 
 const vistaApp = require('./app/vistas/vista.app');
 const vistaUsuarios = require('./app/vistas/vista.usuarios');
-const vistaIngresos = require('./app/vistas/vista.ingresos');
+const vistaPresupuestos = require('./app/vistas/vista.presupuesto');
 
+const middUsuarios = require('./middelwares/midd.usuarios')
 
 //Middlewares Globales
 app.use(express.json())
 app.use(cors())
+app.use(middUsuarios.limiteConsultas)
 
 
 //Configuraciones Globales
@@ -70,4 +72,4 @@ iniciarServidor();
 //Inicializar las vistas
 vistaApp(app);
 vistaUsuarios(app);
-vistaIngresos(app);
+vistaPresupuestos(app);

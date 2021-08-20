@@ -1,5 +1,7 @@
 // Importar los modulos necesarios
 const controladorUsuarios = require('../controladores/controlador.usuarios');
+const midd = require('../../middelwares/midd.usuarios')
+
 
 // Construir y exportar los modulos
 module.exports = async (app) => {
@@ -28,7 +30,7 @@ module.exports = async (app) => {
 
     // Enpoints a los que podran acceder los usuarios normales
     
-    app.post('/usuario/registro', async(req,res) => {                                     //Metodo que permite registrarse el usuario
+    app.post('/usuario/registro', midd.revisarRegistro, async(req,res) => {                                     //Metodo que permite registrarse el usuario
         let usuario = req.body
         try {
             let nuevoUsuario = await controladorUsuarios.crearUsuario(usuario)
@@ -40,13 +42,13 @@ module.exports = async (app) => {
         }
     })
 
-    app.post('/usuario/login', async(req,res) => {                                          //Metodo que permite validar los datos de acceso del usuario y posteriormente generar un token
+    app.post('/usuario/login', midd.revisarLogin, async(req,res) => {                                          //Metodo que permite validar los datos de acceso del usuario y posteriormente generar un token
         let usuario = req.body
         try {
             let inspeccionarUsuario = await controladorUsuarios.inspeccionarUsuario(usuario);
             if (inspeccionarUsuario){
-                let validacion = await controladorUsuarios.generarToken(usuario)
-                res.status(200).json({message: 'Se valido el usuario', validacion})
+                let validacion = await controladorUsuarios.generarToken(usuario)               
+                res.header('authorization',validacion).json({validacion})
             }else{
                 res.status(200).json({message: 'Credenciales incorrectas'})
             }

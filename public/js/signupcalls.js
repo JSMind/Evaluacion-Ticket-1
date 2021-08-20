@@ -15,6 +15,7 @@ let registroUsuario = async(usuario) => {                                       
         let respuesta = await nuevoRegistro.json();
         return respuesta;
     } catch (error) {
+        
         throw new Error ('Error en la llamada para el registro de usuario')
     }
 }
@@ -31,11 +32,8 @@ let nuevoIngreso = async (usuario) =>{                                          
             body: JSON.stringify(usuario)
         })
         let respuesta = await iniciarSesion.json();
-        
-        console.log(respuesta)
         return respuesta;
     } catch (error) {
-        console.log(error)
-        throw new Error ('Error en la llamada para el registro de usuario')
+        throw new Error ('Error en la llamada para el inicio de sesion de usuario')
     }
 }

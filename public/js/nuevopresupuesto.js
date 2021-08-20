@@ -63,6 +63,60 @@ function aregarColumnasResumen(th7){
             celda.insertBefore(document.createElement('td'), document.querySelectorAll('.filasuma7')[i]) 
         }
 }
+//INGRESOS, COSTOS DIRECTOS, GASTOS ADMINISTRATIVOS, RECURSOS(% ASIGNACION)
+const guardar= document.querySelector('.guardar')
+guardar.addEventListener('click', ()=>{
+let ingresos = [[600,700,800],[600,700,800]]
+ingresos.push([600,700,800])
+
+for(let i=0; i<ingresos.length; i++){
+    for(let j=0; j<ingresos[0].length;j++){
+        console.log(ingresos[i][j])
+    }
+}
+
+conceptosingresos =[]
+periodosingresos =[]
+
+for(let i=0; i<ingresos.length;i++){
+    conceptosingresos.push(`Concepto${i}`)
+    console.log(conceptosingresos[i])
+}
+
+for(let j=0; j<ingresos[0].length;j++){
+    periodosingresos.push(`Periodo${j}`)
+    console.log(periodosingresos[j])
+
+}
+
+let objetoingresos = {
+    
+
+
+}
+
+
+
+
+// console.log(ingresos.length)
+
+
+// let nuevopresupuesto = [
+//     ingresos:
+//     ,
+//     costos_directos:{
+
+//     },
+//     gastos_administrativos:{
+
+//     },
+//     recursos:{
+
+//     }
+// ]
+
+})
+
 
 //Evento que detecta el Cierre de Sesion
 const cerrarsession = document.querySelector('.singoff')

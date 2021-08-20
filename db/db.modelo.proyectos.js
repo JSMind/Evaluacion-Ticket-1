@@ -9,7 +9,7 @@ const Proyectos = sequelize.define ('Proyectos',{
         allowNull: false
     }
 },{
-    timestamps: true
+    timestamps: false
 });
 
 

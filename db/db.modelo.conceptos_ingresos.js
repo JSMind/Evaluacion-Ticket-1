@@ -4,7 +4,11 @@ const sequelize = require('./db.conection')
 //Datos que contendra la tabla Ingresos
 
 const Conceptos_Ingresos = sequelize.define ('Conceptos_Ingresos',{
-    concepto_ingreso:{
+    numero_concepto:{
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    concepto_nombre:{
         type: DataTypes.STRING(100),
         allowNull: false
     }

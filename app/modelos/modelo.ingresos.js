@@ -3,9 +3,9 @@ const sequelize = require('../../db/db.conection')
 module.exports.obtenerPorPeriodo = async() => {
     try {
         let resultado = await sequelize.query(`SELECT
-        Conceptos_Ingresos.concepto_ingreso,
+        Conceptos_Ingresos.concepto_nombre,
         Periodos.periodo,
-        Ingresos.ingresos_monto 
+        Ingresos.ingreso
     FROM
         Periodos
         INNER JOIN Ingresos ON Periodos.id = Ingresos.id_periodo
@@ -20,7 +20,7 @@ module.exports.obtenerPorConcepto = async() => {
     try {
         let resultado = await sequelize.query(`SELECT
         Periodos.periodo, 
-        Ingresos.ingresos_monto
+        Ingresos.ingreso
     FROM
         Conceptos_Ingresos
         INNER JOIN

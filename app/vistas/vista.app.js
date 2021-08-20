@@ -1,10 +1,12 @@
 // Importación de modulos necesarios a utilizar
+const midd = require('../../middelwares/midd.usuarios')
+
 
 // Exportar los modulos
 module.exports = (app) => {
 
-    app.get('/home', async(req,res) => {                            //Vista que renderiza la pagina Home
-        try { 
+    app.get('/home',  async(req,res) => {                            //Vista que renderiza la pagina Home
+        try {
             res.render('home')  
         } catch (error) {
             console.log('Error al renderizar la pagina principal');

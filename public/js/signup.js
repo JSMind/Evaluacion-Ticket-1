@@ -34,7 +34,6 @@ btnNuevoRegistro.addEventListener('click', async(e) => {
         location.href="http://localhost:3000/login";
       }
     } catch (error) {                                               //En caso fallido se captura el error
-      console.log(error);
       alert(`Error: ${error.message}`);
     }
   }
