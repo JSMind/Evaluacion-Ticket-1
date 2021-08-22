@@ -5,12 +5,6 @@ const Permisos = require('./db.modelo.permisos');
 
 //Datos que contendra la tabla Usuarios
 const Usuarios = sequelize.define('Usuarios',{
-    id_usuario:{
-        primaryKey: true,
-        autoIncrement: true,
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
     nombres:{
         type: DataTypes.STRING(50),
         allowNull: false
@@ -24,7 +18,7 @@ const Usuarios = sequelize.define('Usuarios',{
         allowNull: false
     },
     telefono:{
-        type: DataTypes.STRING(15),
+        type: DataTypes.STRING(20),
         allowNull: false
     },
     fecha_nacimiento:{

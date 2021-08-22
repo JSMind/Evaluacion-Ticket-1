@@ -15,7 +15,7 @@ const Presupuestos = sequelize.define ('Presupuestos',{
     }
   
 },{
-    timestamps: true
+    timestamps: false
 });
 
 Presupuestos.belongsTo(Proyectos, {foreignKey: 'id_proyecto'});

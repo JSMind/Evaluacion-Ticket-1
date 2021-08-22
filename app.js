@@ -42,17 +42,17 @@ async function iniciarServidor() {
     try {
         await Permisos.sync({ alter: true });
         await Usuarios.sync({ alter: true });
+        await Periodos.sync({ alter: true });
+        await Proyectos.sync({ alter: true });
+        await Presupuestos.sync({ alter: true });
         await Recursos_Role.sync({ alter: true });
         await Conceptos_Costos_Administrativos.sync({ alter: true });
         await Conceptos_Costos_Directos.sync({ alter: true });
         await Conceptos_Ingresos.sync({ alter: true });
-        await Periodos.sync({ alter: true });
         await Porcentajes_Recursos.sync({ alter: true });
         await Costos_Administrativos.sync({ alter: true });
         await Costos_Directos.sync({ alter: true });
         await Ingresos.sync({ alter: true });
-        await Proyectos.sync({ alter: true });
-        await Presupuestos.sync({ alter: true });
         await sequelize.authenticate();
         console.log('Se establecio una conexion exitosa con la base de datos');
         app.listen(process.env.PORT, () => {

@@ -32,7 +32,7 @@ const Porcentajes_Recursos = sequelize.define ('Porcentajes_Recursos',{
     }
      
 },{
-    timestamps: true
+    timestamps: false
 });
 Porcentajes_Recursos.belongsTo(Periodos, {foreignKey: 'id_periodo'});
 Porcentajes_Recursos.belongsTo(Recursos_Rol, {foreignKey: 'id_recurso_rol'});

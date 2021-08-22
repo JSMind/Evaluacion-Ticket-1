@@ -30,7 +30,7 @@ const Costos_Directos = sequelize.define ('Costos_Directos',{
     }
     
 },{
-    timestamps: true
+    timestamps: false
 });
 Costos_Directos.belongsTo(Periodos, {foreignKey: 'id_periodo'});
 Costos_Directos.belongsTo(Conceptos_Costos_Directos, {foreignKey: 'id_concepto_costo_directo'});

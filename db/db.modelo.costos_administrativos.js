@@ -31,7 +31,7 @@ const Costos_Administrativos = sequelize.define('Costos_Administrativos', {
    
 
 }, {
-    timestamps: true
+    timestamps: false
 });
 Costos_Administrativos.belongsTo(Periodos, { foreignKey: 'id_periodo' });
 Costos_Administrativos.belongsTo(Conceptos_Costos_Administrativos, { foreignKey: 'id_concepto_costo_administrativo' });

@@ -13,7 +13,7 @@ const Conceptos_Costos_Directos = sequelize.define ('Conceptos_Costos_Directos',
         allowNull: false
     }  
 },{
-    timestamps: true
+    timestamps: false
 });
 
 module.exports = Conceptos_Costos_Directos

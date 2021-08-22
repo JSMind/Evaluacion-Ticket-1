@@ -13,7 +13,7 @@ const Conceptos_Costos_Administrativos = sequelize.define ('Conceptos_Costos_Adm
         allowNull: false
     }   
 },{
-    timestamps: true
+    timestamps: false
 });
 
 module.exports = Conceptos_Costos_Administrativos

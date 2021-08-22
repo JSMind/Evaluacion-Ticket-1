@@ -13,7 +13,7 @@ const Conceptos_Ingresos = sequelize.define ('Conceptos_Ingresos',{
         allowNull: false
     }
 },{
-    timestamps: true
+    timestamps: false
 });
 
 module.exports = Conceptos_Ingresos

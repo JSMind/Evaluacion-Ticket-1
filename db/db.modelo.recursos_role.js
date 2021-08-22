@@ -19,7 +19,7 @@ const Recursos_Role = sequelize.define ('Recursos_Role',{
     }
     
     },{
-    timestamps: true
+    timestamps: false
 
 });
 

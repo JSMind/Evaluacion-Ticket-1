@@ -31,7 +31,7 @@ const Ingresos = sequelize.define ('Ingresos',{
     }
     
 },{
-    timestamps: true
+    timestamps: false
 });
 Ingresos.belongsTo(Periodos, {foreignKey: 'id_periodo'});
 Ingresos.belongsTo(Conceptos_Ingresos, {foreignKey: 'id_concepto_ingreso'});
