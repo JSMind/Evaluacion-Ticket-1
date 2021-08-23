@@ -158,3 +158,48 @@ module.exports.nuevogastoadministrativo = async(gastoadminstrativo) => {
         throw new Error(error)
     }
 }
+
+
+module.exports.editaringreso= async(ingresoeditado) => {
+    try {
+        let resultados = {}
+        let resultado = await modeloPresupuesto.editaringreso(ingresoeditado);
+        resultados = {message:"Exito en editar el ingreso" }
+
+        return resultados
+
+    } catch (error) {
+        console.log('Error desde el controlador nuevopresupuesto' + " " + error)
+        throw new Error(error)
+    }
+}
+
+
+module.exports.editarcostodirecto = async(costodirectoeditado) => {
+    try {
+        let resultados = {}
+        let resultado = await modeloPresupuesto.editarcostodirecto(costodirectoeditado);
+        resultados = {message:"Exito en editar el costo directo" }
+
+        return resultados
+
+    } catch (error) {
+        console.log('Error desde el controlador nuevopresupuesto' + " " + error)
+        throw new Error(error)
+    }
+}
+
+
+module.exports.editargastoadministrativo = async(gastoadminstrativoeditado) => {
+    try {
+        let resultados = {}
+        let resultado = await modeloPresupuesto.editargastoadministrativo(gastoadminstrativoeditado);
+        resultados = {message:"Exito en editar el gasto administrativo" }
+
+        return resultados
+
+    } catch (error) {
+        console.log('Error desde el controlador nuevopresupuesto' + " " + error)
+        throw new Error(error)
+    }
+}

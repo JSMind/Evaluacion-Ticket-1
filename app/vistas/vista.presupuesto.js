@@ -2,7 +2,7 @@ const controladorPresupuesto = require('../controladores/controlador.presupuesto
 
 module.exports =  (app) => {
 
-    app.get('/ingresos/:id_presupuesto', async(req, res) => {           //Endpoint para traer el objeto ingresos por id de presupuesto
+    app.get('/ingresos/:id_presupuesto', async(req, res) => {                       //Endpoint para traer el objeto ingresos por id de presupuesto
         try {
             id_presupuesto= req.params.id_presupuesto
             const resultados = await controladorPresupuesto.ingresos(id_presupuesto)
@@ -14,7 +14,7 @@ module.exports =  (app) => {
     })
 
 
-    app.get('/costosdirectos/:id_presupuesto', async(req, res) => {     //Endpoint para traer el objeto de los costosdirectos por id de presupuesto
+    app.get('/costosdirectos/:id_presupuesto', async(req, res) => {                 //Endpoint para traer el objeto de los costosdirectos por id de presupuesto
         try {
             id_presupuesto= req.params.id_presupuesto
             const resultados = await controladorPresupuesto.costosdirectos(id_presupuesto)
@@ -27,7 +27,7 @@ module.exports =  (app) => {
 
 
 
-    app.get('/gastosadministrativos/:id_presupuesto', async(req, res) => {  //Endpoint para traer el objeto gastosadministrativos por id de presupuesto
+    app.get('/gastosadministrativos/:id_presupuesto', async(req, res) => {          //Endpoint para traer el objeto gastosadministrativos por id de presupuesto
         try {
             id_presupuesto= req.params.id_presupuesto
             const resultados = await controladorPresupuesto.gastosadministrativos(id_presupuesto)
@@ -38,7 +38,7 @@ module.exports =  (app) => {
     })
 
     
-    app.post('/nuevoproyecto/:nombreproyectonuevo', async(req, res) => {     //Endpoint para crear un nuevo proyecto
+    app.post('/nuevoproyecto/:nombreproyectonuevo', async(req, res) => {            //Endpoint para crear un nuevo proyecto
         try {
             nombre= req.params.nombreproyectonuevo
             const resultados = await controladorPresupuesto.nombreproyectonuevo(nombre)
@@ -49,7 +49,7 @@ module.exports =  (app) => {
         }
     })
 
-    app.post('/nuevopresupuesto', async(req, res) => {                       //Endpoint para crear un nuevo presupuesto
+    app.post('/nuevopresupuesto', async(req, res) => {                              //Endpoint para crear un nuevo presupuesto
         try {
             nuevopresupuesto= req.body
             const resultados = await controladorPresupuesto.nuevopresupuesto(nuevopresupuesto)
@@ -60,7 +60,7 @@ module.exports =  (app) => {
         }
     })
 
-    app.post('/ingreso/nuevoconcepto', async(req, res) => {                   //Endpoint para crear un nuevo concepto de ingreso
+    app.post('/ingresos/nuevoconcepto', async(req, res) => {                        //Endpoint para crear un nuevo concepto de ingreso
         try {
             nuevoconcepto= req.body
             const resultados = await controladorPresupuesto.ingresonuevoconcepto(nuevoconcepto)
@@ -71,7 +71,7 @@ module.exports =  (app) => {
         }
     })
     
-    app.post('/costosdirectos/nuevoconcepto', async(req, res) => {              //Endpoint para crear un nuevo concepto de costos directos
+    app.post('/costosdirectos/nuevoconcepto', async(req, res) => {                //Endpoint para crear un nuevo concepto de costos directos
         try {
             nuevoconcepto= req.body
             const resultados = await controladorPresupuesto.costosdirectosnuevoconcepto(nuevoconcepto)
@@ -94,7 +94,7 @@ module.exports =  (app) => {
         }
     })
 
-    app.post('/ingreso/nuevoingreso', async(req, res) => {                         //Endpoint para crear un nuevo ingreso
+    app.post('/ingresos/nuevoingreso', async(req, res) => {                         //Endpoint para crear un nuevo ingreso
         try {
             ingreso= req.body
             const resultados = await controladorPresupuesto.nuevoingreso(ingreso)
@@ -105,7 +105,7 @@ module.exports =  (app) => {
         }
     })
 
-    app.post('/costosdirectos/nuevocostodirecto', async(req, res) => {              //Endpoint para crear un nuevo presupuesto
+    app.post('/costosdirectos/nuevocostodirecto', async(req, res) => {              //Endpoint para crear un nuevo costo directo
         try {
             costodirecto= req.body
             const resultados = await controladorPresupuesto.nuevocostodirecto(costodirecto)
@@ -127,8 +127,37 @@ module.exports =  (app) => {
         }
     })
 
+    app.post('/ingresos/editaringreso', async(req, res) => {                            //Endpoint para crear un nuevo gasto administrativo
+        try {
+            ingresoeditado= req.body
+            const resultados = await controladorPresupuesto.editaringreso(ingresoeditado)
+            console.log(resultados)
+            res.send(resultados);
+        } catch (error) {
+            res.status(500).json('Error al cargar la página')
+        }
+    })
 
+    app.post('/costosdirectos/editarcostodirecto', async(req, res) => {                 //Endpoint para crear un nuevo gasto administrativo
+        try {
+            costodirectoeditado= req.body
+            const resultados = await controladorPresupuesto.editarcostodirecto(costodirectoeditado)
+            console.log(resultados)
+            res.send(resultados);
+        } catch (error) {
+            res.status(500).json('Error al cargar la página')
+        }
+    })
 
-
+    app.post('/gastosadministrativos/editargastoadministrativo', async(req, res) => {     //Endpoint para crear un nuevo gasto administrativo
+        try {
+            gastoadminstrativoeditado= req.body
+            const resultados = await controladorPresupuesto.editargastoadministrativo(gastoadminstrativoeditado)
+            console.log(resultados)
+            res.send(resultados);
+        } catch (error) {
+            res.status(500).json('Error al cargar la página')
+        }
+    })
 
 }
