@@ -12,7 +12,7 @@ class ModelosUsuarios {
             if (existeUsuario != null){
                 const validarcontrasena = await bcrypt.compare(usuario.contrasena, existeUsuario.contrasena);
                 if (validarcontrasena){
-                    return true;
+                    return existeUsuario.id;
                 } else {
                     return false;
                 }
@@ -67,6 +67,19 @@ class ModelosUsuarios {
             throw new Error('Ocurrio un error desde el modelo')
         }
     }
+
+    validarAdministrador = async (idUsuario) => {                                 //Metodo para consultar el tipo de usuario (credencial) de un usuario
+        try {
+            const resultado = await Usuarios.findOne({where: {id: `${idUsuario}`}})
+            const tipoUsuario = resultado.tipo_usuario
+            
+            return tipoUsuario
+        } catch (error) {
+            console.log(error);
+            throw new Error('Ocurrio un error desde el modelo')
+        }
+    }
+
 }
 
 module.exports = ModelosUsuarios

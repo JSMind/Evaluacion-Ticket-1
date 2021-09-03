@@ -1,5 +1,9 @@
 // Variables globales
-let btnLogin = document.getElementById("login");
+const btnLogin = document.getElementById("login");
+const loginCalls = new UsuariosCalls()
+const validacionLogin = new Validaciones()
+
+
 
 // Función para capturar los datos del usuario
 btnLogin.addEventListener('submit', async(e) =>{
@@ -9,9 +13,9 @@ btnLogin.addEventListener('submit', async(e) =>{
     }
     try {
         e.preventDefault()
-        validarEmail(usuario.correo);
-        validarContrasena(usuario.contrasena);
-        let iniciarSesion = await nuevoIngreso(usuario);
+        validacionLogin.validarEmail(usuario.correo);
+        validacionLogin.validarContrasena(usuario.contrasena);
+        let iniciarSesion = await loginCalls.nuevoIngreso(usuario);
         if(iniciarSesion.validacion){
             usuario.token = iniciarSesion.validacion;
             localStorage.setItem('token', JSON.stringify(usuario.token))

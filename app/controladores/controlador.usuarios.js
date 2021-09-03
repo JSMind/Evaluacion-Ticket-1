@@ -1,5 +1,6 @@
 // Importar los modulos a utilizar
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const jwtDecoded = require('jwt-decode')
 const bcrypt = require('bcrypt');
 const ModelosUsuarios = require('../modelos/modelo.usuarios');
 const  modelo = new ModelosUsuarios();
@@ -32,7 +33,7 @@ class ControladorUsuarios {
         }
     }
 
-    eliminarUsuario = async (idUsuario) => {                             //Controldor que conecta con el metodo eliminarUsuario para la eliminacion de un Usuario 
+    eliminarUsuario = async (idUsuario) => {                            //Controldor que conecta con el metodo eliminarUsuario para la eliminacion de un Usuario 
         try {
             const borrarUsuario = await modelo.eliminarUsuario(idUsuario);
 
@@ -42,10 +43,9 @@ class ControladorUsuarios {
         }
     }
 
-    inspeccionarUsuario = async(usuario) =>{                             //Controlador que conecta con el metodo insepeccionarUsuario para realizar la validacion de los datos de acceso
+    inspeccionarUsuario = async(usuario) =>{                            //Controlador que conecta con el metodo insepeccionarUsuario para realizar la validacion de los datos de acceso
         try {
             const usuarioValido = await modelo.inspeccionarUsuario(usuario);
-            
             if (usuarioValido){
                 return usuarioValido;
             }else{
@@ -58,9 +58,9 @@ class ControladorUsuarios {
         }
     }
 
-    generarToken = async(usuario) => {                                   //Controlador que genera el token
+    generarToken = async(idUsuario) => {                                //Controlador que genera el token
         try {
-            const token = jwt.sign({usuario}, process.env.SECRET_KEY);     //Tiempo máximo de validez de 15 min
+            const token = jwt.sign({idUsuario}, process.env.SECRET_KEY);   //Tiempo máximo de validez de 15 min
             
             return token;
         } catch (error) {
@@ -69,7 +69,7 @@ class ControladorUsuarios {
         }
     }
 
-    verificarUsuario = async(token) =>{                                  //Controlador que verifica el token con la Secret Key 
+    verificarUsuario = async(token) =>{                                 //Controlador que verifica el token con la Secret Key 
         try {
             const validacion = jwt.verify(token, process.env.SECRET_KEY);
             
@@ -84,6 +84,29 @@ class ControladorUsuarios {
             throw new Error('Ocurrio un error desde el controlador');
         }
     }
+
+    decifrarToken = async (token) => {                                  //Controlador que decifra el token
+        try {
+            const tokenValido = token 
+            const decoded = jwtDecoded(tokenValido)
+            const idUsuario = decoded.idUsuario
+            return idUsuario
+
+        } catch (error) {
+            console.log(error);
+            throw new Error('Ocurrio un error desde el controlador');
+        }
+    }    
+
+    validarAdministrador = async (idUsuario) => {                       //Controlador que valida que el usuario sea Administrador mediante su id de usuario
+        try {
+            const respuesta = await modelo.validarAdministrador(idUsuario)
+            return respuesta
+        }catch(error){
+            console.log(error);
+            throw new Error('Ocurrio un error desde el controlador');
+        }
+    }  
 }
 
 

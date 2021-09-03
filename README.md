@@ -22,4 +22,8 @@ Para poder acceder al proyecto, es necesario seguir los siguientes pasos :
 
     Para visualizar la pagína web, se puede acceder a la url http://localhost:3000/login  donde en la seccion signup el usuario podra registrarse para posteriormente
     iniciar sesion y dirigirse a la pagina /home.
+    
+    Si el usuario desea crear un nuevo presupuesto dirigirse al boton "Nuevo Presupuesto", se mostrara todas las tablas para crearlo.
+
+    
 

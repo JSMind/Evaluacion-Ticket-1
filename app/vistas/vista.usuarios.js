@@ -1,14 +1,16 @@
 // Importar los modulos necesarios
 const ControladorUsuarios = require('../controladores/controlador.usuarios');
 const  controlador = new ControladorUsuarios();
-const midd = require('../../middelwares/midd.usuarios')
+const middUsuarios = require('../../middelwares/midd.usuarios');
+const middVadilaciones = require('../../middelwares/midd.validaciones.usuarios');
+
 
 
 // Construir y exportar los modulos
 module.exports = async (app) => {
 
     //METODOS A LOS CUALES SOLO PODRA ACCEDER EL ADMINISTRADOR PARA MOSTRAR TODOS LOS USUARIOS DE LA BD Y ELIMINAR PERMANENTEMENTE A UN USUARIO
-    app.get('/Usuarios', async (req,res) => {                                          
+    app.get('/Usuarios', middUsuarios.validarUsuarioAdministrador, async (req,res) => {                                          
         try {
             const consultaUsuarios = await controlador.listarUsuarios();
             
@@ -19,7 +21,7 @@ module.exports = async (app) => {
         }
     })
 
-    app.delete('/Usuarios/:idUsuario', async (req,res) => {                             
+    app.delete('/Usuarios/:idUsuario', middUsuarios.validarUsuarioAdministrador,   async (req,res) => {                             
         const  idUsuario = req.params.idUsuario;
         try {
             const  eliminarUsuario = await controlador.eliminarUsuario(idUsuario);
@@ -32,7 +34,7 @@ module.exports = async (app) => {
 
     // METODOS PARA REALIZAR UN REGISTRO DE USUARIO E INICIAR SESION
     
-    app.post('/Usuario/Registro', midd.revisarRegistro, async(req,res) => {                                     
+    app.post('/Usuario/Registro',middVadilaciones.revisarRegistro, async(req,res) => {                                     
         const  usuario = req.body
         try {
             const  nuevoUsuario = await controlador.crearUsuario(usuario)
@@ -45,13 +47,13 @@ module.exports = async (app) => {
         }
     })
 
-    app.post('/Usuario/Login', midd.revisarLogin, async(req,res) => {                                          
+    app.post('/Usuario/Login', middVadilaciones.revisarLogin, async(req,res) => {                                          
         const  usuario = req.body
         try {
             const  inspeccionarUsuario = await controlador.inspeccionarUsuario(usuario);
-            
             if (inspeccionarUsuario){
-                const  validacion = await controlador.generarToken(usuario)               
+                const idUsuario = inspeccionarUsuario
+                const  validacion = await controlador.generarToken(idUsuario)               
                 
                 res.header('authorization',validacion).json({validacion})
             }else{

@@ -1,12 +1,12 @@
 const modelosPresupuestos = require('../modelos/modelo.presupuesto');
-const  modelo2 = new modelosPresupuestos();
+const  modelo = new modelosPresupuestos();
 
 class ControladorPresupuesto {
 
     ingresos = async(idPresupuesto) => {
         try {
 
-            const resultados = await modelo2.obtenerIngresos(idPresupuesto);
+            const resultados = await modelo.obtenerIngresos(idPresupuesto);
             
             return resultados[0]
 
@@ -19,7 +19,7 @@ class ControladorPresupuesto {
     costosDirectos = async(idPresupuesto) => {
         try {
             
-            const resultados = await modelo2.obtenerCostosDirectos(idPresupuesto);
+            const resultados = await modelo.obtenerCostosDirectos(idPresupuesto);
 
             return resultados[0]
 
@@ -32,7 +32,7 @@ class ControladorPresupuesto {
     gastosAdministrativos = async(idPresupuesto) => {
         try {
             
-            const resultados = await modelo2.obtenerGastosAdministrativos(idPresupuesto);
+            const resultados = await modelo.obtenerGastosAdministrativos(idPresupuesto);
 
             return resultados[0]
 
@@ -44,7 +44,7 @@ class ControladorPresupuesto {
 
     nombreProyectonuevo = async(nombre) => {
         try {
-            const resultados = await modelo2.nombreProyectoNuevo(nombre);
+            const resultados = await modelo.nombreProyectoNuevo(nombre);
             
             return resultados
 
@@ -57,7 +57,7 @@ class ControladorPresupuesto {
     nuevoPresupuesto = async(nuevoPresupuesto) => {
         try {
             
-            const resultados = await modelo2.nuevoPresupuesto(nuevoPresupuesto);
+            const resultados = await modelo.nuevoPresupuesto(nuevoPresupuesto);
 
             return resultados
 
@@ -70,7 +70,7 @@ class ControladorPresupuesto {
     ingresoNuevoConcepto = async(nuevoConcepto) => {
         try {
             
-            const resultados = await modelo2.ingresoNuevoConcepto(nuevoConcepto);
+            const resultados = await modelo.ingresoNuevoConcepto(nuevoConcepto);
 
             return resultados
 
@@ -82,7 +82,7 @@ class ControladorPresupuesto {
 
     costosDirectosNuevoConcepto = async(nuevoConcepto) => {
         try {
-            const resultados = await modelo2.costosDirectosNuevoConcepto(nuevoConcepto);
+            const resultados = await modelo.costosDirectosNuevoConcepto(nuevoConcepto);
 
             return resultados
 
@@ -94,7 +94,7 @@ class ControladorPresupuesto {
 
     gastosAdministrativosNuevoConcepto = async(nuevoConcepto) => {
         try {
-            const resultados = await modelo2.gastosAdministrativosNuevoConcepto(nuevoConcepto);
+            const resultados = await modelo.gastosAdministrativosNuevoConcepto(nuevoConcepto);
 
             return resultados
 
@@ -106,7 +106,7 @@ class ControladorPresupuesto {
 
     nuevoIngreso = async(ingreso) => {
         try {
-            const resultados = await modelo2.nuevoIngreso(ingreso);
+            const resultados = await modelo.nuevoIngreso(ingreso);
 
             return resultados
 
@@ -118,7 +118,7 @@ class ControladorPresupuesto {
 
     nuevoCostoDirecto = async(costoDirecto) => {
         try {
-            const resultados = await modelo2.nuevoCostoDirecto(costoDirecto);
+            const resultados = await modelo.nuevoCostoDirecto(costoDirecto);
 
             return resultados
 
@@ -130,7 +130,7 @@ class ControladorPresupuesto {
 
     nuevoGastoAdministrativo = async(gastoAdminstrativo) => {
         try {
-            const resultados = await modelo2.nuevoGastoAdministrativo(gastoAdminstrativo);
+            const resultados = await modelo.nuevoGastoAdministrativo(gastoAdminstrativo);
 
             return resultados
 
@@ -142,7 +142,7 @@ class ControladorPresupuesto {
 
     editarIngreso = async(ingresoEditado) => {
         try {
-            const resultados = await modelo2.editarIngreso(ingresoEditado);
+            const resultados = await modelo.editarIngreso(ingresoEditado);
 
             return resultados
 
@@ -154,7 +154,7 @@ class ControladorPresupuesto {
 
     editarCostoDirecto = async(costoDirectoEditado) => {
         try {
-            const resultados = await modelo2.editarCostoDirecto(costoDirectoEditado);
+            const resultados = await modelo.editarCostoDirecto(costoDirectoEditado);
 
             return resultados
 
@@ -166,7 +166,7 @@ class ControladorPresupuesto {
 
     editarGastoAdministrativo = async(gastoAdminstrativoEditado) => {
         try {
-            const resultados = await modelo2.editarGastoAdministrativo(gastoAdminstrativoEditado);
+            const resultados = await modelo.editarGastoAdministrativo(gastoAdminstrativoEditado);
 
             return resultados
 
