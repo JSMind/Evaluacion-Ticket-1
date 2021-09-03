@@ -1,15 +1,17 @@
 // Importar los modulos necesarios
-const controladorUsuarios = require('../controladores/controlador.usuarios');
+const ControladorUsuarios = require('../controladores/controlador.usuarios');
+const  controlador = new ControladorUsuarios();
 const midd = require('../../middelwares/midd.usuarios')
 
 
 // Construir y exportar los modulos
 module.exports = async (app) => {
 
-    // Endpoints a los que solo podran acceder los administradores
-    app.get('/usuarios', async (req,res) => {                                          //Metodo para listar todos los usarios registrados en la base de datos
+    //METODOS A LOS CUALES SOLO PODRA ACCEDER EL ADMINISTRADOR PARA MOSTRAR TODOS LOS USUARIOS DE LA BD Y ELIMINAR PERMANENTEMENTE A UN USUARIO
+    app.get('/Usuarios', async (req,res) => {                                          
         try {
-            let consultaUsuarios = await controladorUsuarios.listarUsuarios();
+            const consultaUsuarios = await controlador.listarUsuarios();
+            
             res.status(200).json({message: 'Consulta exitosa', consultaUsuarios});
         } catch (error) {
             console.log(error.message);
@@ -17,10 +19,10 @@ module.exports = async (app) => {
         }
     })
 
-    app.delete('/usuarios/:idUsuario', async (req,res) => {                             //Metdo para eliminar permanentemente a un usario de la base de datos mediante el Id del Usuario
-        let idUsuario = req.params.idUsuario;
+    app.delete('/Usuarios/:idUsuario', async (req,res) => {                             
+        const  idUsuario = req.params.idUsuario;
         try {
-            let eliminarUsuario = await controladorUsuarios.eliminarUsuario(idUsuario);
+            const  eliminarUsuario = await controlador.eliminarUsuario(idUsuario);
             res.status(200).json({message: 'El usuario se elimino correctamente'});
         } catch (error) {
             console.log(error.message);
@@ -28,12 +30,13 @@ module.exports = async (app) => {
         }
     })
 
-    // Enpoints a los que podran acceder los usuarios normales
+    // METODOS PARA REALIZAR UN REGISTRO DE USUARIO E INICIAR SESION
     
-    app.post('/usuario/registro', midd.revisarRegistro, async(req,res) => {                                     //Metodo que permite registrarse el usuario
-        let usuario = req.body
+    app.post('/Usuario/Registro', midd.revisarRegistro, async(req,res) => {                                     
+        const  usuario = req.body
         try {
-            let nuevoUsuario = await controladorUsuarios.crearUsuario(usuario)
+            const  nuevoUsuario = await controlador.crearUsuario(usuario)
+            
             res.status(200).json({message: 'Registro de usuario exitoso', nuevoUsuario})
             
         } catch (error) {
@@ -42,12 +45,14 @@ module.exports = async (app) => {
         }
     })
 
-    app.post('/usuario/login', midd.revisarLogin, async(req,res) => {                                          //Metodo que permite validar los datos de acceso del usuario y posteriormente generar un token
-        let usuario = req.body
+    app.post('/Usuario/Login', midd.revisarLogin, async(req,res) => {                                          
+        const  usuario = req.body
         try {
-            let inspeccionarUsuario = await controladorUsuarios.inspeccionarUsuario(usuario);
+            const  inspeccionarUsuario = await controlador.inspeccionarUsuario(usuario);
+            
             if (inspeccionarUsuario){
-                let validacion = await controladorUsuarios.generarToken(usuario)               
+                const  validacion = await controlador.generarToken(usuario)               
+                
                 res.header('authorization',validacion).json({validacion})
             }else{
                 res.status(200).json({message: 'Credenciales incorrectas'})

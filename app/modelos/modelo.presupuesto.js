@@ -1,171 +1,179 @@
 const sequelize = require('../../db/db.conection');
-const { costosdirectos } = require('../controladores/controlador.presupuesto');
-module.exports.obtenerIngresos = async(id_presupuesto) => {        //Metodo que realiza la consulta en la base de datos para obtener los ingresos 
-    try {
-        let resultado = await sequelize.query(`SELECT  Ingresos.id AS id_ingreso,Ingresos.ingreso, Conceptos_Ingresos.concepto_nombre, Periodos.periodo, Ingresos.id_presupuesto, Proyectos.proyecto_nombre, Presupuestos.version, Ingresos.id_usuario, Usuarios.nombres
-		FROM Ingresos INNER JOIN Conceptos_Ingresos ON id_concepto_ingreso = Conceptos_Ingresos.id
-					  INNER JOIN Periodos ON id_periodo = Periodos.id
-					  INNER JOIN Proyectos ON id_presupuesto = Proyectos.id
-					  INNER JOIN Presupuestos ON id_presupuesto = Presupuestos.id
-					  INNER JOIN Usuarios ON id_usuario = Usuarios.id
-		WHERE id_presupuesto = ${id_presupuesto}`);
-        return resultado;
-    } catch (error) {
-        console.log('Error desde el modelo' + error)
-        throw new Error(error)
+
+class ModelosPresupuestos {
+
+    obtenerIngresos = async(idPresupuesto) => {         
+        try {
+
+            const resultado = await sequelize.query(`SELECT  Ingresos.id AS id_ingreso,Ingresos.ingreso, Conceptos_Ingresos.concepto_nombre, Periodos.periodo, Ingresos.id_presupuesto, Proyectos.proyecto_nombre, Presupuestos.version, Ingresos.id_usuario, Usuarios.nombres
+            FROM Ingresos INNER JOIN Conceptos_Ingresos ON id_concepto_ingreso = Conceptos_Ingresos.id
+                        INNER JOIN Periodos ON id_periodo = Periodos.id
+                        INNER JOIN Proyectos ON id_presupuesto = Proyectos.id
+                        INNER JOIN Presupuestos ON id_presupuesto = Presupuestos.id
+                        INNER JOIN Usuarios ON id_usuario = Usuarios.id
+            WHERE id_presupuesto = ${idPresupuesto}`);
+            return resultado;
+        } catch (error) {
+            console.log('Error desde el modelo' + error)
+            throw new Error(error)
+        }
     }
-}
-module.exports.obtenerCostos_Directos = async(id_presupuesto) => {
-    try {
-        let resultado = await sequelize.query(`SELECT  Costos_Directos.id AS id_costo_directo, Costos_Directos.costo_directo, Conceptos_Costos_Directos.concepto_nombre, Periodos.periodo, Costos_Directos.id_presupuesto, Proyectos.proyecto_nombre, Presupuestos.version, Costos_Directos.id_usuario, Usuarios.nombres
-		FROM Costos_Directos INNER JOIN Conceptos_Costos_Directos ON id_concepto_costo_directo = Conceptos_Costos_Directos.id
-							 INNER JOIN Periodos ON id_periodo= Periodos.id
-							 INNER JOIN Proyectos ON id_presupuesto = Proyectos.id
-							 INNER JOIN Presupuestos ON id_presupuesto = Presupuestos.id
-							 INNER JOIN Usuarios ON id_usuario = Usuarios.id
-		WHERE id_presupuesto = ${id_presupuesto}`);
-        return resultado;
-    } catch (error) {
-        console.log('Error desde el modelo' + error)
-        throw new Error(error)
+
+    obtenerCostosDirectos = async(idPresupuesto) => {
+        try {
+            const resultado = await sequelize.query(`SELECT  Costos_Directos.id AS id_costo_directo, Costos_Directos.costo_directo, Conceptos_Costos_Directos.concepto_nombre, Periodos.periodo, Costos_Directos.id_presupuesto, Proyectos.proyecto_nombre, Presupuestos.version, Costos_Directos.id_usuario, Usuarios.nombres
+            FROM Costos_Directos INNER JOIN Conceptos_Costos_Directos ON id_concepto_costo_directo = Conceptos_Costos_Directos.id
+                                INNER JOIN Periodos ON id_periodo= Periodos.id
+                                INNER JOIN Proyectos ON id_presupuesto = Proyectos.id
+                                INNER JOIN Presupuestos ON id_presupuesto = Presupuestos.id
+                                INNER JOIN Usuarios ON id_usuario = Usuarios.id
+            WHERE id_presupuesto = ${idPresupuesto}`);
+            return resultado;
+        } catch (error) {
+            console.log('Error desde el modelo' + error)
+            throw new Error(error)
+        }
+    }
+
+    obtenerGastosAdministrativos = async(idPresupuesto) => {
+        try {
+            const resultado = await sequelize.query(`SELECT  Costos_Administrativos.id AS id_costo_administrativo,Costos_Administrativos.costo_administrativo, Conceptos_Costos_Administrativos.concepto_nombre, Periodos.periodo, Costos_Administrativos.id_presupuesto, Proyectos.proyecto_nombre, Presupuestos.version, Costos_Administrativos.id_usuario
+            FROM Costos_Administrativos INNER JOIN Conceptos_Costos_Administrativos ON id_concepto_costo_administrativo = Conceptos_Costos_Administrativos.id
+                                        INNER JOIN Periodos ON id_periodo = Periodos.id
+                                        INNER JOIN Proyectos ON id_presupuesto = Proyectos.id
+                                        INNER JOIN Presupuestos ON id_presupuesto = Presupuestos.id
+                                        INNER JOIN Usuarios ON id_usuario = Usuarios.id
+            WHERE id_presupuesto = ${idPresupuesto}`);
+            return resultado;
+        } catch (error) {
+            console.log('Error desde el modelo' + error)
+            throw new Error(error)
+        }
+    }
+
+    nombreProyectoNuevo = async(nombre) => {
+        try {
+            const resultado = await sequelize.query(`INSERT INTO Proyectos(proyecto_nombre) 
+                                                        VALUES ('${nombre}')`);
+            return resultado;
+        } catch (error) {
+            console.log('Error desde el modelo' + error)
+            throw new Error(error)
+        }
+    }
+
+    nuevoPresupuesto = async(nuevoPresupuesto) => {
+        try {
+            const resultado = await sequelize.query(`INSERT INTO Presupuestos(id_proyecto, version) 
+                                                        VALUES (${nuevoPresupuesto.id_proyecto}, '${nuevoPresupuesto.version}')`);
+            return resultado;
+        } catch (error) {
+            console.log('Error desde el modelo' + error)
+            throw new Error(error)
+        }
+    }
+
+    ingresoNuevoConcepto = async(nuevoConcepto) => {
+        try {
+            const resultado = await sequelize.query(`INSERT INTO Conceptos_Ingresos(numero_concepto, concepto_nombre)  
+                                            VALUES (${nuevoConcepto.numero_concepto},'${nuevoConcepto.concepto_nombre}')`);
+            return resultado;
+        } catch (error) {
+            console.log('Error desde el modelo' + error)
+            throw new Error(error)
+        }
+    }
+
+    costosDirectosNuevoConcepto = async(nuevoConcepto) => {
+        try {
+            const resultado = await sequelize.query(`INSERT INTO Conceptos_Costos_Directos(numero_concepto, concepto_nombre)  
+                                            VALUES (${nuevoConcepto.numero_concepto},'${nuevoConcepto.concepto_nombre}')`);
+            return resultado;
+        } catch (error) {
+            console.log('Error desde el modelo' + error)
+            throw new Error(error)
+        }
+    }
+
+    gastosAdministrativosNuevoConcepto = async(nuevoConcepto) => {
+        try {
+            const resultado = await sequelize.query(`INSERT INTO Conceptos_Costos_Administrativos(numero_concepto, concepto_nombre)  
+                                            VALUES (${nuevoConcepto.numero_concepto},'${nuevoConcepto.concepto_nombre}')`);
+            return resultado;
+        } catch (error) {
+            console.log('Error desde el modelo' + error)
+            throw new Error(error)
+        }
+    }
+
+    nuevoIngreso = async(ingreso) => {
+        try {
+            const resultado = await sequelize.query(`INSERT INTO Ingresos(ingreso, id_concepto_ingreso, id_periodo, id_presupuesto, id_usuario) 
+                                                        VALUES (${ingreso.ingreso},${ingreso.id_concepto_ingreso},${ingreso.id_periodo},${ingreso.id_presupuesto},${ingreso.id_usuario})`);
+            return resultado;
+        } catch (error) {
+            console.log('Error desde el modelo' + error)
+            throw new Error(error)
+        }
+    }
+
+    nuevoCostoDirecto = async(costoDirecto) => {
+        try {
+            const resultado = await sequelize.query(`INSERT INTO Costos_Directos(costo_directo, id_concepto_costo_directo, id_periodo, id_presupuesto, id_usuario) 
+                                                        VALUES (${costoDirecto.costo_directo},${costoDirecto.id_concepto_costo_directo},${costoDirecto.id_periodo},${costoDirecto.id_presupuesto},${costoDirecto.id_usuario})`);
+            return resultado;
+        } catch (error) {
+            console.log('Error desde el modelo' + error)
+            throw new Error(error)
+        }
+    }
+
+    nuevoGastoAdministrativo = async(gastoAdminstrativo) => {
+        try {
+            const resultado = await sequelize.query(`INSERT INTO Costos_Administrativos(costo_administrativo,id_concepto_costo_administrativo,id_periodo,id_presupuesto,id_usuario) 
+                                                    VALUES (${gastoAdminstrativo.costo_administrativo},${gastoAdminstrativo.id_concepto_costo_administrativo},${gastoAdminstrativo.id_periodo},${gastoAdminstrativo.id_presupuesto},${gastoAdminstrativo.id_usuario})`);
+            return resultado;
+        } catch (error) {
+            console.log('Error desde el modelo' + error)
+            throw new Error(error)
+        }
+    }
+
+    editarIngreso = async(ingresoEditado) => {
+        try {
+            const resultado = await sequelize.query(`UPDATE Ingresos
+                                                    SET ingreso = ${ingresoEditado.ingreso}
+                                                    WHERE id =${ingresoEditado.id_ingreso}`);
+            return resultado;
+        } catch (error) {
+            console.log('Error desde el modelo' + error)
+            throw new Error(error)
+        }
+    }
+
+    editarCostoDirecto= async(costoDirectoEditado) => {
+        try {
+            const resultado = await sequelize.query(`UPDATE Costos_Directos
+                                                        SET costo_directo = ${costoDirectoEditado.costo_directo}
+                                                        WHERE id =${costoDirectoEditado.id_costo_directo}`);
+            return resultado;
+        } catch (error) {
+            console.log('Error desde el modelo' + error)
+            throw new Error(error)
+        }
+    }
+
+    editarGastoAdministrativo= async(gastoAdminstrativoEditado) => {
+        try {
+            const resultado = await sequelize.query(`UPDATE Costos_Administrativos
+                                                        SET costo_administrativo = ${gastoAdminstrativoEditado.costo_administrativo}
+                                                        WHERE id =${gastoAdminstrativoEditado.id_costo_administrativo}`);
+            return resultado;
+        } catch (error) {
+            console.log('Error desde el modelo' + error)
+            throw new Error(error)
+        }
     }
 }
 
-module.exports.obtenerGastos_Administrativos = async(id_presupuesto) => {
-    try {
-        let resultado = await sequelize.query(`SELECT  Costos_Administrativos.id AS id_costo_administrativo,Costos_Administrativos.costo_administrativo, Conceptos_Costos_Administrativos.concepto_nombre, Periodos.periodo, Costos_Administrativos.id_presupuesto, Proyectos.proyecto_nombre, Presupuestos.version, Costos_Administrativos.id_usuario
-		FROM Costos_Administrativos INNER JOIN Conceptos_Costos_Administrativos ON id_concepto_costo_administrativo = Conceptos_Costos_Administrativos.id
-									INNER JOIN Periodos ON id_periodo = Periodos.id
-									INNER JOIN Proyectos ON id_presupuesto = Proyectos.id
-									INNER JOIN Presupuestos ON id_presupuesto = Presupuestos.id
-									INNER JOIN Usuarios ON id_usuario = Usuarios.id
-		WHERE id_presupuesto = ${id_presupuesto}`);
-        return resultado;
-    } catch (error) {
-        console.log('Error desde el modelo' + error)
-        throw new Error(error)
-    }
-}
-
-
-module.exports.nombreproyectonuevo = async(nombre) => {
-    try {
-        let resultado = await sequelize.query(`INSERT INTO Proyectos(proyecto_nombre) 
-                                                    VALUES ('${nombre}')`);
-        return resultado;
-    } catch (error) {
-        console.log('Error desde el modelo' + error)
-        throw new Error(error)
-    }
-}
-
-module.exports.nuevopresupuesto= async(nuevopresupuesto) => {
-    try {
-        let resultado = await sequelize.query(`INSERT INTO Presupuestos(id_proyecto, version) 
-                                                    VALUES (${nuevopresupuesto.id_proyecto}, '${nuevopresupuesto.version}')`);
-        return resultado;
-    } catch (error) {
-        console.log('Error desde el modelo' + error)
-        throw new Error(error)
-    }
-}
-
-module.exports.ingresonuevoconcepto= async(nuevoconcepto) => {
-    try {
-        let resultado = await sequelize.query(`INSERT INTO Conceptos_Ingresos(numero_concepto, concepto_nombre)  
-                                        VALUES (${nuevoconcepto.numero_concepto},'${nuevoconcepto.concepto_nombre}')`);
-        return resultado;
-    } catch (error) {
-        console.log('Error desde el modelo' + error)
-        throw new Error(error)
-    }
-}
-module.exports.costosdirectosnuevoconcepto= async(nuevoconcepto) => {
-    try {
-        let resultado = await sequelize.query(`INSERT INTO Conceptos_Costos_Directos(numero_concepto, concepto_nombre)  
-                                        VALUES (${nuevoconcepto.numero_concepto},'${nuevoconcepto.concepto_nombre}')`);
-        return resultado;
-    } catch (error) {
-        console.log('Error desde el modelo' + error)
-        throw new Error(error)
-    }
-}
-module.exports.gastosadministrativosnuevoconcepto= async(nuevoconcepto) => {
-    try {
-        let resultado = await sequelize.query(`INSERT INTO Conceptos_Costos_Administrativos(numero_concepto, concepto_nombre)  
-                                        VALUES (${nuevoconcepto.numero_concepto},'${nuevoconcepto.concepto_nombre}')`);
-        return resultado;
-    } catch (error) {
-        console.log('Error desde el modelo' + error)
-        throw new Error(error)
-    }
-}
-
-module.exports.nuevoingreso= async(ingreso) => {
-    try {
-        let resultado = await sequelize.query(`INSERT INTO Ingresos(ingreso, id_concepto_ingreso, id_periodo, id_presupuesto, id_usuario) 
-                                                    VALUES (${ingreso.ingreso},${ingreso.id_concepto_ingreso},${ingreso.id_periodo},${ingreso.id_presupuesto},${ingreso.id_usuario})`);
-        return resultado;
-    } catch (error) {
-        console.log('Error desde el modelo' + error)
-        throw new Error(error)
-    }
-}
-
-module.exports.nuevocostodirecto= async(costodirecto) => {
-    try {
-        let resultado = await sequelize.query(`INSERT INTO Costos_Directos(costo_directo, id_concepto_costo_directo, id_periodo, id_presupuesto, id_usuario) 
-                                                     VALUES (${costodirecto.costo_directo},${costodirecto.id_concepto_costo_directo},${costodirecto.id_periodo},${costodirecto.id_presupuesto},${costodirecto.id_usuario})`);
-        return resultado;
-    } catch (error) {
-        console.log('Error desde el modelo' + error)
-        throw new Error(error)
-    }
-}
-
-module.exports.nuevogastoadministrativo= async(gastoadministrativo) => {
-    try {
-        let resultado = await sequelize.query(`INSERT INTO Costos_Administrativos(costo_administrativo,id_concepto_costo_administrativo,id_periodo,id_presupuesto,id_usuario) 
-                                                VALUES (${gastoadministrativo.costo_administrativo},${gastoadministrativo.id_concepto_costo_administrativo},${gastoadministrativo.id_periodo},${gastoadministrativo.id_presupuesto},${gastoadministrativo.id_usuario})`);
-        return resultado;
-    } catch (error) {
-        console.log('Error desde el modelo' + error)
-        throw new Error(error)
-    }
-}
-
-module.exports.editaringreso= async(ingresoeditado) => {
-    try {
-        let resultado = await sequelize.query(`UPDATE Ingresos
-                                                SET ingreso = ${ingresoeditado.ingreso}
-                                                WHERE id =${ingresoeditado.id_ingreso}`);
-        return resultado;
-    } catch (error) {
-        console.log('Error desde el modelo' + error)
-        throw new Error(error)
-    }
-}
-
-module.exports.editarcostodirecto= async(costodirectoeditado) => {
-    try {
-        let resultado = await sequelize.query(`UPDATE Costos_Directos
-                                                    SET costo_directo = ${costodirectoeditado.costo_directo}
-                                                     WHERE id =${costodirectoeditado.id_costo_directo}`);
-        return resultado;
-    } catch (error) {
-        console.log('Error desde el modelo' + error)
-        throw new Error(error)
-    }
-}
-
-module.exports.editargastoadministrativo= async(gastoadminstrativoeditado) => {
-    try {
-        let resultado = await sequelize.query(`UPDATE Costos_Administrativos
-                                                    SET costo_administrativo = ${gastoadminstrativoeditado.costo_administrativo}
-                                                    WHERE id =${gastoadminstrativoeditado.id_costo_administrativo}`);
-        return resultado;
-    } catch (error) {
-        console.log('Error desde el modelo' + error)
-        throw new Error(error)
-    }
-}
+module.exports = ModelosPresupuestos
