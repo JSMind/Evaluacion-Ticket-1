@@ -2,22 +2,24 @@
 
 
 
-Evaluacion-Ticket-1 ENTREGA FINAL
+Generacion de Presupuestos - Ticket-1 
+
+En este proyecto se realizo la construcción de un sistema que permita la generación de Presupuestos para proyectos de TI.
 
 Para poder acceder al proyecto, es necesario seguir los siguientes pasos :
 
-    Clonar el repositorio con la instrucción:
+    1 .- Clonar el repositorio con la instrucción:
 
     git clone https://github.com/JSMind/Generacion-de-Presupuestos-Ticket-1.git
     
     El proyecto esta realizado en modelo-vista-controlador y los modelos de la base de datos estan echos para SQL.
 
-    Una vez clonado el repositorio en la ruta deseada, es necesario instalar los modulos de nuestro servidor al ejecutar las siguiente líneas de comando desde la terminal:
+    3.- Una vez clonado el repositorio en la ruta deseada, es necesario instalar los modulos de nuestro servidor al ejecutar las siguiente líneas de comando desde la terminal:
 
          npm install
-    Debe crearse el archivo .ENV con las variables de entorno para realizar la conexion con la base de datos.
+    4 .- Debe crearse el archivo .ENV con las variables de entorno para realizar la conexion con la base de datos.
 
-    Después de instalar los modulos, es preciso inicializar el servidor al ejecutar la siguiente línea de comando:
+    5.- Después de instalar los modulos, es preciso inicializar el servidor al ejecutar la siguiente línea de comando:
 
          npm run dev
 
