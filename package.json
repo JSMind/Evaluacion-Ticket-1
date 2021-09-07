@@ -1,7 +1,7 @@
 {
   "name": "ticket1",
   "version": "1.0.0",
-  "description": "Evualacion del proyecto ticket1",
+  "description": "En este proyecto se construye una pantalla que permita la generacion de Presupuestos para proyectos IT",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JSMind/Evaluacion-Ticket-1.git"
+    "url": "git+https://github.com/JSMind/Generacion-de-Presupuestos-Ticket-1.git"
   },
   "author": "Jair Serralde",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JSMind/Evaluacion-Ticket-1/issues"
+    "url": "https://github.com/JSMind/Generacion-de-Presupuestos-Ticket-1/issues"
   },
-  "homepage": "https://github.com/JSMind/Evaluacion-Ticket-1#readme",
+  "homepage": "https://github.com/JSMind/Generacion-de-Presupuestos-Ticket-1#readme",
   "dependencies": {
     "-": "0.0.1",
     "bcrypt": "^5.0.1",
