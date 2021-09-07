@@ -15,6 +15,7 @@ Para poder acceder al proyecto, es necesario seguir los siguientes pasos :
     Una vez clonado el repositorio en la ruta deseada, es necesario instalar los modulos de nuestro servidor al ejecutar las siguiente líneas de comando desde la terminal:
 
          npm install
+    Debe crearse el archivo .ENV con las variables de entorno para realizar la conexion con la base de datos.
 
     Después de instalar los modulos, es preciso inicializar el servidor al ejecutar la siguiente línea de comando:
 
