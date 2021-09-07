@@ -1,8 +1,4 @@
-# Evaluacion-Ticket-1
-
-
-
-Generacion de Presupuestos - Ticket-1 
+# Generacion de Presupuestos TI - Ticket 1 
 
 En este proyecto se realizo la construcción de un sistema que permita la generación de Presupuestos para proyectos de TI.
 
