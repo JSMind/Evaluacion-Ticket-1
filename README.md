@@ -8,7 +8,7 @@ Para poder acceder al proyecto, es necesario seguir los siguientes pasos :
 
     Clonar el repositorio con la instrucción:
 
-    git clone https://github.com/JSMind/Evaluacion-Ticket-1.git
+    git clone https://github.com/JSMind/Generacion-de-Presupuestos-Ticket-1.git
     
     El proyecto esta realizado en modelo-vista-controlador y los modelos de la base de datos estan echos para SQL.
 
