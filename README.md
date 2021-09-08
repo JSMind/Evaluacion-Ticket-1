@@ -1,6 +1,6 @@
 # Generacion de Presupuestos TI - Ticket 1 
 
-En este proyecto se realizo la construcción completa del backend y un poco del fronted de un sistema que permita la generación de Presupuestos para proyectos de TI.
+En este proyecto se realizo la construcción completa del backend y un poco del frontend de un sistema que permita la generación de Presupuestos para proyectos de TI.
 
 Para poder acceder al proyecto, es necesario seguir los siguientes pasos :
 
